@@ -1,22 +1,22 @@
-// Wait for the DOM to fully load before running the script
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Step 1: Select DOM Elements
+    
     const addButton = document.getElementById('add-task-btn');
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
-    // Step 2: Load Tasks from Local Storage
+    
     loadTasks();
 
-    // Step 3: Define the addTask Function
+   
     function addTask(taskText, save = true) {
-        // If taskText was not passed (i.e., user is adding manually), get it from input
+        
         if (!taskText) {
             taskText = taskInput.value.trim();
         }
 
-        // Do not add empty tasks
+        // add empty tasks
         if (taskText === "") {
             alert("Please enter a task.");
             return;
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         removeButton.textContent = 'Remove';
         removeButton.className = 'remove-btn'; // Use className, not classList.add
 
-        // Handle task removal (from DOM and localStorage)
+        // Handle task removal 
         removeButton.onclick = function () {
             taskList.removeChild(li);
             removeTaskFromStorage(taskText);
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Step 4: Define a function to remove a task from localStorage
+    // remove a task from localStorage
     function removeTaskFromStorage(taskText) {
         let storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
         // Filter out the task to be removed
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('tasks', JSON.stringify(storedTasks));
     }
 
-    // Step 5: Define a function to load tasks from localStorage
+    // tasks from localStorage
     function loadTasks() {
         const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
         storedTasks.forEach(taskText => {
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Step 6: Attach Event Listeners
+    // Attach Event Listeners
     addButton.addEventListener('click', () => addTask());
 
     taskInput.addEventListener('keypress', function (event) {
