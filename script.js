@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         taskList.appendChild(li);
         
         // Clear the task input field by setting taskInput.value to an empty string.
-        taskInput.value = '';
+        taskInput.value = "";
     }
     
     // Step 5: Attach Event Listeners:
